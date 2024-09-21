@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Video Editor</h1>
+        <!-- Add the GIF icon here -->
+        <div class="icon-container">
+            <img src="{{ url_for('static', filename='Icon/film-strip.gif') }}" alt="Film Strip Icon" class="gif-icon">
+        </div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" accept="video/*" required>
+        <input type="text" name="start_time" placeholder="Start Time (seconds)" required>
+        <input type="text" name="end_time" placeholder="End Time (seconds)" required>
+        <input type="text" name="new_filename" placeholder="New File Name" required>
+        
+        <div>
+            <input type="checkbox" name="save_audio" id="save_audio">
+            <label for="save_audio">Save Audio?</label>
+        </div>
+
+      <!-- <div>
+            <input type="checkbox" name="save_only_audio" id="save_only_audio">
+            <label for="save_only_audio">Save Only Audio (no video)?</label>
+        </div>\\  -->
+        
+        <input type="submit" value="Upload Video">
+    </form>
+
+  
+
+    <h2 class="section-title-video">All Saved Videos</h2>
+    <div class="video-gallery">
+        {% for video in videos %}
+            <div class="video-item">
+                <a href="{{ url_for('play_video', filename=video) }}">
+                    <video controls>
+                        <source src="{{ url_for('serve_video', filename=video) }}" 
+                                type="video/{{ 'mp4' if video.endswith('.mp4') else 'webm' }}">
+                    </video>
+                </a>
+                <p>{{ video }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="section-title-audio">All Saved Audios</h2>
+    <div class="audio-gallery">
+        {% for audio in audios %}
+            <div class="audio-item">
+                <p>{{ audio }}</p>
+                <audio controls>
+                    <source src="{{ url_for('serve_audio', filename=audio) }}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <script>
+        document.querySelectorAll('video').forEach(video => {
+            video.addEventListener('error', function() {
+                console.log('Error playing video:', video.currentSrc);
+                video.poster = 'error.jpg';  // Placeholder for error handling
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+    
