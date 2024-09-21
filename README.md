@@ -45,9 +45,25 @@ Usually installed with Flask.
 **
 A templating engine for Python that Flask uses for rendering HTML templates.
 Also usually installed with Flask.
-Additional Libraries (if applicable):
-Pillow: If you plan to handle image files (like thumbnails or error images).
+
+
+**Additional Libraries (if applicable):**
+
+****Pillow:** **
+
+If you plan to handle image files (like thumbnails or error images).
 Install using: pip install Pillow
+
+
+**Commands use to Install Required Libraries**
+
+pip install Flask moviepy SpeechRecognition Pillow google-cloud-speech
+
+******to run the app** ****
+
+python app.py
+
+
 
 ![image](https://github.com/user-attachments/assets/b1160641-b65c-4847-9a19-bb02d66bab5d)
 
