@@ -49,3 +49,5 @@ Additional Libraries (if applicable):
 Pillow: If you plan to handle image files (like thumbnails or error images).
 Install using: pip install Pillow
 
+![image](https://github.com/user-attachments/assets/b1160641-b65c-4847-9a19-bb02d66bab5d)
+
