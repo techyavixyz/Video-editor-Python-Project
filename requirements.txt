@@ -1,2 +1,5 @@
-Flask==2.x.x
-moviepy==x.x.x
+Flask
+moviepy
+SpeechRecognition
+Pillow
+google-cloud-speech
